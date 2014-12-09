@@ -200,7 +200,7 @@ body{
   height: 100%;
   max-height: 100%;
   letter-spacing: 0.01rem;
-  font-size: 18px;
+  font-size: 16px;
   font-family: 'charter-regular', serif;
   -webkit-font-feature-settings: 'kern' 1;
   -moz-font-feature-settings: 'kern' 1;
@@ -215,6 +215,10 @@ body{
   box-shadow:         0px 2px 2px 0px rgba(0,0,0,0.09);
 }
 
+main{
+  padding-bottom: 6rem;
+}
+
 h1, h2, h3, h4{
   font-family: 'clearsans-regular', sans-serif;
 }
@@ -223,6 +227,18 @@ h1.blog-title{
   max-width: 24rem;
   width: 24rem;
   text-align: right;
+  -webkit-animation: jump-load 0.4s;
+  animation: jump-load 0.2s;
+  -webkit-animation-delay: 0.2s;
+  animation-delay: 0.2s;
+  -webkit-animation-iteration-count: 1;
+  animation-iteration-count: 1;
+  -webkit-animation-timing-function: ease-in-out;
+  animation-timing-function: ease-in-out;
+}
+
+h1.blog-title a{
+  color: #333;
 }
 
 a{
@@ -232,6 +248,7 @@ a{
 
 section{
   display: inline-block;
+  -webkit-backface-visibility: hidden;
 }
 
 .tags a,
@@ -250,23 +267,120 @@ section{
 
 .tags a:hover,
 .tags a:focus,
+.back-button:hover,
+.subscribe-button:hover,
 .pagination .older-posts:hover,
 .pagination .older-posts:focus,
 .pagination .newer-posts:hover,
 .pagination .newer-posts:focus{
   background-color: rgba(255, 133, 79, 0.63);
   border-color: rgba(255, 177, 142, 0.63);
+  cursor: pointer;
 }
 
 .main-header{
   margin: 3rem 0 5rem;
 }
 
-/*
+.back-button, .subscribe-button {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    display: inline-block;
+    font-family: "clearsans-regular", "sans-serif";
+    float: left;
+    height: 38px;
+    padding: 0 1em 0 1em;
+    border: #FEEDC3 1px solid;
+    color: #FEEDC3;
+    text-align: center;
+    font-size: 12px;
+    text-transform: uppercase;
+    line-height: 35px;
+    border-radius: 3px;
+    transition: all ease-in-out 0.2s;
+    margin-left: 4rem;
+}
+.back-button:before, .subscribe-button:before {
+    position: relative;
+    bottom: -2px;
+    font-size: 13px;
+    line-height: 0;
+    margin-right: 8px;
+}
 
-  3. Clearfix
+.subscribe-button{
+  float: right;
+  font-style: italic;
+  margin-right: 4rem;
+}
 
-*/
+/* ======================================================================
+  X. Icons
+  ======================================================================= */
+
+/* Import the font file with the icons in it */
+@font-face {
+    font-family: "casper-icons";
+    src:url("../fonts/casper-icons.eot");
+    src:url("../fonts/casper-icons.eot?#iefix") format("embedded-opentype"),
+        url("../fonts/casper-icons.woff") format("woff"),
+        url("../fonts/casper-icons.ttf") format("truetype"),
+        url("../fonts/casper-icons.svg#icons") format("svg");
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Apply these base styles to all icons */
+[class^="icon-"]:before, [class*=" icon-"]:before {
+    font-family: "casper-icons", "Open Sans", sans-serif;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    text-decoration: none !important;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Each icon is created by inserting the correct character into the
+   content of the :before pseudo element. Like a boss. */
+.icon-ghost:before {
+    content: "\f600";
+}
+.icon-feed:before {
+    content: "\f601";
+}
+.icon-twitter:before {
+    content: "\f602";
+    font-size: 1.1em;
+}
+.icon-google-plus:before {
+    content: "\f603";
+}
+.icon-facebook:before {
+    content: "\f604";
+}
+.icon-arrow-left:before {
+    content: "\f605";
+}
+.icon-stats:before {
+    content: "\f606";
+}
+.icon-location:before {
+    content: "\f607";
+    margin-left: -3px; /* Tracking fix */
+}
+.icon-link:before {
+    content: "\f608";
+}
+
+
+/* ======================================================================
+  X. Clearfix
+  ======================================================================= */
 
 /* Clears shit */
 .clearfix:before,
@@ -298,15 +412,23 @@ section{
     vertical-align: middle;
 }
 
-/*
-
-  3. Index
-
-*/
+/* ======================================================================
+  X. Index
+  ======================================================================= */
 
 article{
   color: #FEEDC3;
+  -webkit-backface-visibility: hidden;
   margin-bottom: 4em;
+  -webkit-animation: jump-load 0.4s;
+  animation: jump-load 0.2s;
+  -webkit-animation-delay: 0.2s;
+  animation-delay: 0.2s;
+  -webkit-animation-iteration-count: 1;
+  animation-iteration-count: 1;
+  -webkit-animation-timing-function: ease-in-out;
+  animation-timing-function: ease-in-out;
+  line-height: 1.6;
 }
 
 .post-date{
@@ -371,11 +493,97 @@ article{
   display: inline-block;
 }
 
-/*
+/* ======================================================================
+  X. Post Template
+  ======================================================================= */
 
+.post-template main{
+  background-color: white;
+}
+
+.post-template .main-header{
+  margin: 3rem 0;
+}
+
+.post-template article{
+  max-width: 640px;
+  width: 100%;
+  padding: 0 2em 2em;
+  margin: 0;
+  color: #333;
+  font-size: 1.2em;
+}
+
+.post-template article a{
+  color: rgb(168, 17, 17);
+}
+
+.post-template img{
+  width: 100%;
+}
+
+.post-template blockquote{
+  border-left: .25em solid #333;
+  padding: 1em;
+  margin: 1em 0;
+}
+
+.post-template code{
+  background: rgb(255, 247, 236);
+
+}
+
+.post-template pre{
+  background: rgb(255, 247, 236);
+  padding: 1em;
+  margin: 1em 0;
+}
+
+.post-template time{
+  color: #333;
+  width: auto;
+  font-size: 1em;
+  font-family: "charter-italic", sans-serif;
+  margin-top: 0;
+  vertical-align: top;
+}
+
+.post-template hr{
+  border: 1px solid #333;
+}
+
+.post-template p, .post-template ul, .post-template ol{
+  margin-bottom: 1em;
+  margin-top: 1em;
+}
+
+.post-template ul, .post-template ol{
+  margin-left: 3rem;
+}
+
+.post-template em{
+  font-family: "charter-italic", sans-serif;
+  font-weight: normal;
+  font-style: italic;
+}
+
+.post-template strong{
+  font-family: "charter-bold", sans-serif;
+  font-weight: bold;
+  font-style: normal;
+}
+
+.post-template .post-content{
+  margin-top: 1rem;
+}
+
+.post-template .share{
+  display: block;
+}
+
+/* ======================================================================
   X. Pagination
-
-*/
+  ======================================================================= */
 
 .pagination{
   margin-left: 28.7rem;
@@ -392,10 +600,26 @@ article{
   X. Footer
   ======================================================================= */
 
+.page-wrapper {
+  min-height: 100%;
+  /* equal to footer height */
+  margin-bottom: -6rem;
+}
+
+.page-wrapper:after {
+  content: "";
+  display: block;
+}
+
+.site-footer, .page-wrapper:after {
+  height: 6rem;
+}
+
 .site-footer {
     position: relative;
-    margin: 8rem 0 0 0;
-    padding: 0.5rem 15px;
+    /*margin: 8rem 0 0 0;*/
+    padding: 0.5rem 2rem;
+    height: 6rem;
     border-top: #EBF2F6 1px solid;
     font-family: "clearsans-thin", sans-serif;
     font-size: 1rem;
@@ -478,5 +702,93 @@ article{
   .pagination{
     margin: 0 auto;
     width: 37rem;
+    text-align: center;
   }
 }
+
+
+/* ==========================================================================
+   12. Animations
+   ========================================================================== */
+
+/* Used to fade in title/desc on the home page */
+@-webkit-keyframes jump-load {
+    0% {
+        -webkit-transform: translateY(0px);
+        transform: translateY(0px);
+    }
+    10% {
+        -webkit-transform: translateY(1px);
+        transform: translateY(1px);
+    }
+    50% {
+        -webkit-transform: translateY(-1px);
+        transform: translateY(-1px);
+    }
+    90% {
+        -webkit-transform: translateY(1px);
+        transform: translateY(1px);
+    }
+    100% {
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+    }
+}
+@keyframes jump-load {
+    0% {
+        -webkit-transform: translateY(0px);
+        transform: translateY(0px);
+    }
+    10% {
+        -webkit-transform: translateY(1px);
+        transform: translateY(1px);
+    }
+    50% {
+        -webkit-transform: translateY(-1px);
+        transform: translateY(-1px);
+    }
+    90% {
+        -webkit-transform: translateY(1px);
+        transform: translateY(1px);
+    }
+    100% {
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+    }
+}
+
+/* Used to bounce .scroll-down on home page */
+@-webkit-keyframes bounce {
+    0%, 10%, 25%, 40%, 50% {
+        -webkit-transform: translateY(0) rotate(-90deg);
+                transform: translateY(0) rotate(-90deg);
+    }
+    20% {
+        -webkit-transform: translateY(-10px) rotate(-90deg);
+                transform: translateY(-10px) rotate(-90deg);
+    }
+    30% {
+        -webkit-transform: translateY(-5px) rotate(-90deg);
+                transform: translateY(-5px) rotate(-90deg);
+    }
+}
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        -webkit-transform: translateY(0) rotate(-90deg);
+                transform: translateY(0) rotate(-90deg);
+    }
+    40% {
+        -webkit-transform: translateY(-10px) rotate(-90deg);
+                transform: translateY(-10px) rotate(-90deg);
+    }
+    60% {
+        -webkit-transform: translateY(-5px) rotate(-90deg);
+                transform: translateY(-5px) rotate(-90deg);
+    }
+}
+
+
+/* ==========================================================================
+   End of file. Animations should be the last thing here. Do not add stuff
+   below this point, or it will probably fuck everything up.
+   ========================================================================== */
