@@ -282,7 +282,7 @@ section{
   margin: 3rem 0 5rem;
 }
 
-.back-button, .subscribe-button {
+.header-button {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
@@ -301,7 +301,7 @@ section{
     transition: all ease-in-out 0.2s;
     margin-left: 4rem;
 }
-.back-button:before, .subscribe-button:before {
+.header-button:before {
     position: relative;
     bottom: -2px;
     font-size: 13px;
@@ -674,6 +674,12 @@ article{
 
   .tags, .pagination{
     font-size: 1.5rem;
+  }
+
+  .header-button.pages{
+    float: right;
+    margin-bottom: .5rem;
+    margin-right: 4rem;
   }
 }
 

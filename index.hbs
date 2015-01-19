@@ -5,7 +5,9 @@
 <header class="main-header {{#if @blog.cover}}" style="background-image: url({{@blog.cover}}){{else}}no-cover{{/if}}">
     <nav class="main-nav overlay clearfix">
         {{#if @blog.logo}}<a class="blog-logo" href="{{@blog.url}}"><img src="{{@blog.logo}}" alt="Blog Logo" /></a>{{/if}}
-        <a class="subscribe-button icon-feed" href="{{@blog.url}}/rss/">Subscribe</a>
+        <a class="header-button pages" href="{{@blog.url}}/ux-weekly/" title="UX Weekly">UX Weekly</a>
+        <a class="header-button pages" href="http://tilde.town/~simonv3/" title="Tilde Club">Tilde Club (experiments)</a>
+        <a class="header-button icon-feed subscribe-button" href="{{@blog.url}}/rss/">Subscribe</a>
     </nav>
     <div class="vertical">
         <div class="main-header-content inner">
